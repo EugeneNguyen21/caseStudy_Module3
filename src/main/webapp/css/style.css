@@ -1,0 +1,60 @@
+/* CSS Document */
+
+
+.flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 1px solid silver;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+
+.wrap    {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.wrap li {
+    background: gold;
+}
+
+.flex-item {
+    background: tomato;
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+
+    line-height: 100px;
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+}
+
+
+.bg-black{background-color: rgba(14,14,14,1.00)}
+.carousel-caption{top:200px;}
+
+.bg-orange{background-color: #f0644f;color: aliceblue;font-weight:600;text-align:center}
+.m-right{border: 2px solid #f0644f; border-right: 2px solid white;}
+
+.underline{width: 100px; height:2px; background-color: orangered;}
+.bg-light-gray{background-color: rgba(111,111,111,0.09)}
+
+.media img{max-width:120px; height:auto}
+.underline-green{width: 70px; height: 2px; background-color:lawngreen}
+.underline-blue{width: 70px; height: 2px; background-color: mediumblue;}
+.underline-black{width: 70px; height: 2px; background-color: black;}
+
+.card-body{text-align: center;}
+
+.blog .media img{max-width: 200px; height: auto;}
+
+
