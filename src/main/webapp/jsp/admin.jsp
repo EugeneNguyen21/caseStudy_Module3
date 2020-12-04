@@ -10,13 +10,52 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Admin</title>
+    <link rel="stylesheet" href="css/bootstrap4.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>    <title>Admin</title>
 </head>
 <body>
 <%@include file="/jsp/header.jsp" %>
-<%@include file="/jsp/listUser.jsp" %>
-<%@include file="/jsp/listOrder.jsp" %>
-<%@include file="/jsp/listOrderDetails.jsp" %>
+<div class="container" style="background-color: lavenderblush">
+    <div id="form" style="height: 800px;align-content: center">
+        <h1 style="text-align: center">WELCOME TO ADMIN PAGE</h1>
+
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col-4">Information</th>
+                    <th scope="col">Link</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>Users: </td>
+                    <td><a href="/users">Click here to get infomations</a> </td>
+                </tr>
+                <tr>
+                    <td>Orders: </td>
+                    <td><a href="/order">Click here to get infomations</a> </td>
+                </tr>
+                <tr>
+                    <td>Order details: </td>
+                    <td><a href="/orderDetails">Click here to get infomations</a> </td>
+                </tr>
+                <tr>
+                    <td>Products: </td>
+                    <td><a href="/products">Click here to get infomations</a> </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
 <%@include file="/jsp/footer.jsp" %>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </html>

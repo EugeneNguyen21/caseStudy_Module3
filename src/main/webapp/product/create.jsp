@@ -38,8 +38,7 @@
         <fieldset>
             <legend>product info</legend>
             <table>
-                <label for="id">Id:</label><br>
-                <input type="text" id="id" name="id" ><br>
+
 
                 <label for="productName">Product Name:</label><br>
                 <input type="text" id="productName" name="productName" ><br>
@@ -56,7 +55,10 @@
                 <label for="image">Image:</label><br>
                 <input type="text" id="image" name="image" ><br><br>
 
-                <input type="submit" value="update product">
+                <label for="price">Price:</label><br>
+                <input type="text" id="price" name="price" ><br>
+
+                <input type="submit" value="Create product">
             </table>
         </fieldset>
     </form>

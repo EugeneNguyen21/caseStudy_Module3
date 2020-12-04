@@ -56,10 +56,14 @@
                             </strong></h4>
                         </div>
                         <div class="col-xs-3">
-                            <button type="button" class="btn btn-success btn-block" >
-                                <a href="/createOrder">Pay</a>
-                            </button>
-
+<%--                            <button type="button" class="btn btn-success btn-block" >--%>
+<%--                                <a href="/products">Pay</a>--%>
+<%--                            </button>--%>
+<%--                            <a href="/products?action=processPayment">checkout</a>--%>
+                            <form method="post" action="/products">
+                                <input type="hidden" name="action" value="processPayment">
+                                <button type="submit">Checkout</button>
+                            </form>
 
 
                         </div>

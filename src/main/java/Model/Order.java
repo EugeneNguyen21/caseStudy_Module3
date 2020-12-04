@@ -2,13 +2,19 @@ package Model;
 
 public class Order {
     private int id;
-    private int customerId;
-    private int orderNumber;
+    private int userId;
+    private int total;
 
-    public Order(int id, int customerId, int orderNumber) {
+    public Order(int userId, int total) {
         this.id = id;
-        this.customerId = customerId;
-        this.orderNumber = orderNumber;
+        this.userId = userId;
+        this.total = total;
+    }
+
+    public Order(int id, int userId, int total) {
+        this.id = id;
+        this.userId = userId;
+        this.total = total;
     }
 
     public int getId() {
@@ -19,19 +25,19 @@ public class Order {
         this.id = id;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getOrderNumber() {
-        return orderNumber;
+    public int getTotal() {
+        return total;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setTotal(int total) {
+        this.total = total;
     }
 }

@@ -11,13 +11,13 @@ public class ProductDAO implements IProductDAO {
     private String jdbcUsername = "root";
     private String jdbcPassword = "123456";
 
-    private static final String INSERT_PRODUCTS_SQL = "INSERT INTO products" + "  (id, productName, productDescription, category, quantity, image) VALUES " +
-            " (?, ?, ?, ?, ?, ?);";
+    private static final String INSERT_PRODUCTS_SQL = "INSERT INTO products" + "  (productName, productDescription, category, quantity, image) VALUES " +
+            " (?, ?, ?, ?, ?);";
 
     private static final String SELECT_PRODUCT_BY_ID = "select * from products where id =?";
     private static final String SELECT_ALL_PRODUCTS = "select * from products";
     private static final String DELETE_PRODUCTS_SQL = "delete from products where id = ?;";
-    private static final String UPDATE_PRODUCTS_SQL = "update products set ProductName = ?, ProductDescription = ?, Category =?, Quantity=?, Image=? where Id = ?;";
+    private static final String UPDATE_PRODUCTS_SQL = "update products set ProductName = ?, ProductDescription = ?, Category =?, Quantity=?, Image=?, price=? where Id = ?;";
 
     public ProductDAO() {
     }
@@ -46,7 +46,7 @@ public class ProductDAO implements IProductDAO {
         // Step 1: Establishing a Connection
         try (Connection connection = getConnection();
              // Step 2:Create a statement using connection object
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRODUCT_BY_ID);) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRODUCT_BY_ID)) {
             preparedStatement.setInt(1, id);
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
@@ -54,6 +54,7 @@ public class ProductDAO implements IProductDAO {
 
             // Step 4: Process the ResultSet object.
             while (rs.next()) {
+                int productId = rs.getInt("id");
                 String productName = rs.getString("productName");
                 String productDescription = rs.getString("productDescription");
                 int category = rs.getInt("category");
@@ -113,7 +114,8 @@ public class ProductDAO implements IProductDAO {
             statement.setInt(3, product.getCategory());
             statement.setInt(4, product.getQuantity());
             statement.setString(5, product.getImage());
-            statement.setInt(6, product.getId());
+            statement.setInt(6, product.getPrice());
+            statement.setInt(7, product.getId());
 
             rowUpdated = statement.executeUpdate() > 0;
         }
@@ -123,12 +125,11 @@ public class ProductDAO implements IProductDAO {
     public void insertProduct(Product product) throws SQLException {
         System.out.println(INSERT_PRODUCTS_SQL);
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRODUCTS_SQL)) {
-            preparedStatement.setInt(1, product.getId());
-            preparedStatement.setString(2, product.getProductName());
-            preparedStatement.setString(3, product.getProductDescription());
-            preparedStatement.setInt(4, product.getCategory());
-            preparedStatement.setInt(5, product.getQuantity());
-            preparedStatement.setString(6, product.getImage());
+            preparedStatement.setString(1, product.getProductName());
+            preparedStatement.setString(2, product.getProductDescription());
+            preparedStatement.setInt(3, product.getCategory());
+            preparedStatement.setInt(4, product.getQuantity());
+            preparedStatement.setString(5, product.getImage());
             System.out.println(preparedStatement);
 
             preparedStatement.executeUpdate();

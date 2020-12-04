@@ -6,9 +6,6 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap4.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
 
     <%@ page language="java" contentType="text/html; charset=UTF-8"
              pageEncoding="UTF-8" %>
@@ -28,7 +25,7 @@
             </div>
             <div class="col-xs-6">
                 <button type="button" class="btn btn-primary btn-sm btn-block" >
-                     <a href="/products"> Continue shopping </a>
+                     <a class="btn" href="/products"> Continue shopping </a>
                 </button>
             </div>
         </div>
@@ -40,22 +37,18 @@
             <div class="col-xs-2"><img src="${cartProduct.getImage()}" style="max-width: 95%;max-height: 95%;" alt="${product.getProductName()}"> </div>
 
             <div class="col-xs-4">
-                <h4 class="product-name"><strong>${product.getProductName()}</strong></h4><h4><small>${product.getProductDescription()}</small></h4>
+                <h4 class="product-name"><strong>${cartProduct.getProductName()}</strong></h4><h4><small>${cartProduct.getProductDescription()}</small></h4>
             </div>
 
             <div class="col-xs-6">
 
             <div class="col-xs-6 text-right">
-                <h6><strong>$ ${product.getPrice()} <span class="text-muted">x</span></strong></h6> </div>
+                <h6 id="pricePerPro"><strong>$ ${cartProduct.getPrice()}<span class="text-muted">x</span></strong></h6> </div>
             <div class="col-xs-4">
-
-                <input id = "${product.getId()}" type="text" class="form-control input-sm" value="/>
-" >
+                <input id = "${cartProduct.getId()}" type="text" class="form-control input-sm" value="1" >
             </div>
             <div class="col-xs-2">
-                <button type="button" class="btn btn-link btn-xs" >
-                    <a href="/products?action=removeCartProduct&id=${product.getId()}"> <span class="glyphicon glyphicon-trash"> </span> </a>
-                </button>
+                    <a class="btn" href="/products?action=removeCartProduct&id=${product.getId()}"> <span class="glyphicon glyphicon-trash"> </span> </a>
             </div>
             </div>
         </div>
@@ -85,11 +78,14 @@
                 <c:out value = "${Total}"/>
             </strong></h4>
         </div>
+
         <div class="col-xs-3">
-            <form method="post" action="/products">
-                <input type="hidden" name="action" value="processPayment">
-                <button type="submit">Checkout</button>
-            </form>
+
+            <a href = "/products?action=showPayment">checkout</a>
+<%--            <form method="get" action="/products">--%>
+<%--                <input type="hidden" name="action" value="showPayment">--%>
+<%--                <button type="submit">Checkout</button>--%>
+<%--            </form>--%>
 
 
 

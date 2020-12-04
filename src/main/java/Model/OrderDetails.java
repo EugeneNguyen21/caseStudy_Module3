@@ -4,10 +4,8 @@ public class OrderDetails {
     private int Id;
     private int OrderId;
     private int ProductId;
-    private int orderNumber;
     private int price;
     private int Quantity;
-    private String shipAddress;
 
     public int getId() {
         return Id;
@@ -33,13 +31,6 @@ public class OrderDetails {
         ProductId = productId;
     }
 
-    public int getOrderNumber() {
-        return orderNumber;
-    }
-
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
-    }
 
     public int getPrice() {
         return price;
@@ -57,22 +48,23 @@ public class OrderDetails {
         Quantity = quantity;
     }
 
-    public String getShipAddress() {
-        return shipAddress;
-    }
 
-    public void setShipAddress(String shipAddress) {
-        this.shipAddress = shipAddress;
-    }
 
-    public OrderDetails(int id, int orderId, int productId, int orderNumber, int price, int quantity, String shipAddress) {
-        Id = id;
+    public OrderDetails(int orderId, int productId, int price, int quantity) {
+
         OrderId = orderId;
         ProductId = productId;
-        this.orderNumber = orderNumber;
         this.price = price;
         Quantity = quantity;
-        this.shipAddress = shipAddress;
+
+    }
+
+    public OrderDetails(int Id, int orderId, int productId, int price, int quantity) {
+        Id = Id;
+        OrderId = orderId;
+        ProductId = productId;
+        this.price = price;
+        Quantity = quantity;
 
     }
 }

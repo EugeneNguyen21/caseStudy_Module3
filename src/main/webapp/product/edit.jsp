@@ -23,8 +23,7 @@
     <form method="post">
         <fieldset>
             <legend>product information</legend>
-        <label for="id">Id:</label><br>
-        <input type="text" id="id" name="id" value="${requestScope["product"].getId()}"><br>
+
 
         <label for="productName">Product Name:</label><br>
         <input type="text" id="productName" name="productName" value="${requestScope["product"].getProductName()}"><br>
@@ -40,6 +39,9 @@
 
         <label for="image">Image:</label><br>
         <input type="text" id="image" name="image" value="${requestScope["product"].getImage()}"><br><br>
+
+            <label for="price">Price:</label><br>
+            <input type="text" id="price" name="price" value="${requestScope["product"].getPrice()}"><br><br>
         <input type="submit" value="update product">
         </fieldset>
     </form>

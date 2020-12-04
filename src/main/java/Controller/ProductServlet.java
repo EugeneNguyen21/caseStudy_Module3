@@ -15,13 +15,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet(name = "ProductServlet", urlPatterns = "/products")
 public class ProductServlet extends HttpServlet {
 
+
     ArrayList<Product> productCart = new ArrayList<>();
-//    private static Map<Product, Integer> productCart;
 
     private static final long serialVersionUID = 1L;
     private ProductDAO productDAO;
@@ -78,6 +77,7 @@ public class ProductServlet extends HttpServlet {
             action = "";
         }
         switch(action){
+
             case "addToCart":
                 addToCart(request, response);
                 break;
@@ -99,6 +99,7 @@ public class ProductServlet extends HttpServlet {
             case "showPayment":
                 showPaymentForm(request, response);
                 break;
+
             default:
                 listProducts(request, response);
                 break;
@@ -107,15 +108,20 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void processPayment(HttpServletRequest request, HttpServletResponse response){
-
+        try {
+            response.sendRedirect("/createOrder");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showPaymentForm(HttpServletRequest request, HttpServletResponse response){
         HttpSession cartSession = request.getSession();
-        ArrayList<Product> productCart = (ArrayList<Product>) cartSession.getAttribute("productCart");
+//        ArrayList<Product> productCart = (ArrayList<Product>) cartSession.getAttribute("productCart");
+        cartSession.getAttribute("productCart");
         RequestDispatcher dispatcher;
         request.setAttribute("productCart", productCart);
-        dispatcher = request.getRequestDispatcher("product/cart.jsp");
+        dispatcher = request.getRequestDispatcher("product/payment.jsp");
         try{
             dispatcher.forward(request, response);
         }catch(Exception e){
@@ -137,7 +143,7 @@ public class ProductServlet extends HttpServlet {
     }
     private int checkCartProductIndex(int id){
         Product temp = null;
-        for (Product product: productCart ) {
+        for (Product product: productCart) {
             if(product.getId() == id){
                 temp = product;
             }
@@ -180,7 +186,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showRemoveForm(HttpServletRequest request, HttpServletResponse response){
-        int productId = Integer.parseInt(request.getParameter("productId"));
+        int productId = Integer.parseInt(request.getParameter("id"));
         Product product = productDAO.selectProduct(productId);
 
         RequestDispatcher dispatcher;
@@ -198,7 +204,6 @@ public class ProductServlet extends HttpServlet {
 
 
     private void editProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        int id = Integer.parseInt(request.getParameter("id"));
         String productName = request.getParameter("productName");
         String productDescription = request.getParameter("productDescription");
         int category = Integer.parseInt(request.getParameter("category"));
@@ -206,7 +211,7 @@ public class ProductServlet extends HttpServlet {
         String image = request.getParameter("image");
         int price = Integer.parseInt(request.getParameter("price"));
 
-        Product product = new Product(id, productName, productDescription, category, quantity, image, price);
+        Product product = new Product(productName, productDescription, category, quantity, image, price);
         productDAO.updateProduct(product);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/edit.jsp");
@@ -241,7 +246,6 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void createProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        int id = Integer.parseInt(request.getParameter("id"));
         String productName = request.getParameter("productName");
         String productDescription = request.getParameter("productDescription");
         int category = Integer.parseInt(request.getParameter("category"));
@@ -249,7 +253,7 @@ public class ProductServlet extends HttpServlet {
         String image = request.getParameter("image");
         int price = Integer.parseInt(request.getParameter("price"));
 
-        Product newProduct = new Product(id, productName, productDescription, category, quantity, image, price);
+        Product newProduct = new Product(productName, productDescription, category, quantity, image, price);
         productDAO.insertProduct(newProduct);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/create.jsp");

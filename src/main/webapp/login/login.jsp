@@ -19,7 +19,7 @@
   <body>
   <%@include file="/jsp/header.jsp" %>
 
-  <div class="container " style="background-color: lavenderblush">
+  <div class="container" style="background-color: lavenderblush">
     <div id="form" style="height: 650px;align-content: center" >
       <div class="container-fluid">
       <form style="align-content: center" method="post">
@@ -27,7 +27,11 @@
         <br>
         <p style="text-align: center">User name:  <input type="text" value="" name="user"></p>
         <p style="text-align: center">Password :   <input type="password" value="" name="password"></p>
-        <button style="text-align: center" type="submit">Login</button>
+        <div class="container-fluid" style="text-align: center">
+          <button type="submit">Login</button>
+          <br>
+          <a href="/registerNewUser">Create account</a>
+        </div>
       </form>
       </div>
     </div>

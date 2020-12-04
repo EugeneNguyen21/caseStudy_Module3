@@ -15,8 +15,6 @@
 <div class="container-fluid bg-dark header-top d-none d-md-block">
     <nav class="container navbar navbar-expand-lg navbar-dark bg-black" style="height: 50px">
 
-
-        
     </nav>
 </div>
 <div class="container-fluid bg-black">

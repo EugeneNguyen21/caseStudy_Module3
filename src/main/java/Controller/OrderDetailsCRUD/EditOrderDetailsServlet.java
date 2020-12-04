@@ -37,11 +37,9 @@ public class EditOrderDetailsServlet extends HttpServlet {
         int Id = Integer.parseInt(request.getParameter("id"));
         int OrderId = Integer.parseInt(request.getParameter("orderId"));
         int ProductId = Integer.parseInt(request.getParameter("productId"));
-        int orderNumber = Integer.parseInt(request.getParameter("orderNumber"));
         int price = Integer.parseInt(request.getParameter("price"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        String shipAddress = request.getParameter("shipAddress");
-        OrderDetails orderDetails1 = new OrderDetails(Id,OrderId,ProductId,orderNumber,price,quantity,shipAddress);
+        OrderDetails orderDetails1 = new OrderDetails(Id,OrderId,ProductId,price,quantity);
         orderDetailsServices.updateOrderDetails(orderDetails1);
         try {
             request.getRequestDispatcher("/orderDetails").forward(request,response);
